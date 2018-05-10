@@ -1,6 +1,6 @@
 ## Microsoft.Azure.Management.DataLake.Analytics release notes
 
-### Changes in 3.4.0-preview
+### Changes in 3.4.0-prevtest
 
 **Notes**
 
