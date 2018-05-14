@@ -140,6 +140,19 @@ namespace DataLakeAnalytics.Tests
 
                     Assert.Equal(commonData.TableName, tableGetResponse.Name);
 
+                    var tablePreviewGetResponse =
+                        clientToUse.Catalog.PreviewTable(
+                            commonData.SecondDataLakeAnalyticsAccountName,
+                            commonData.DatabaseName,
+                            CommonTestFixture.SchemaName,
+                            commonData.TableName
+                        );
+
+                    Assert.True(tablePreviewGetResponse.Schema != null && tablePreviewGetResponse.Schema.Count() >= 1);
+                    Assert.True(tablePreviewGetResponse.Rows != null && tablePreviewGetResponse.Rows.Count() >= 1);
+                    Assert.True(tablePreviewGetResponse.TotalRowCount >= 1);
+                    Assert.True(tablePreviewGetResponse.TotalColumnCount >= 1);
+
                     // Get the tvf list
                     var tvfListResponse = 
                         clientToUse.Catalog.ListTableValuedFunctions(
