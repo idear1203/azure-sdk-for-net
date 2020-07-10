@@ -58,6 +58,15 @@ namespace Azure.Analytics.Synapse.Artifacts.Models
 
         internal static MultiplePipelineTrigger DeserializeMultiplePipelineTrigger(JsonElement element)
         {
+            if (element.TryGetProperty("type", out JsonElement discriminator))
+            {
+                switch (discriminator.GetString())
+                {
+                    case "BlobEventsTrigger": return BlobEventsTrigger.DeserializeBlobEventsTrigger(element);
+                    case "BlobTrigger": return BlobTrigger.DeserializeBlobTrigger(element);
+                    case "ScheduleTrigger": return ScheduleTrigger.DeserializeScheduleTrigger(element);
+                }
+            }
             IList<TriggerPipelineReference> pipelines = default;
             string type = default;
             string description = default;
