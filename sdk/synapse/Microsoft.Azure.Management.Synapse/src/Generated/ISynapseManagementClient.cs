@@ -185,6 +185,36 @@ namespace Microsoft.Azure.Management.Synapse
         ISqlPoolVulnerabilityAssessmentRuleBaselinesOperations SqlPoolVulnerabilityAssessmentRuleBaselines { get; }
 
         /// <summary>
+        /// Gets the IExtendedSqlPoolBlobAuditingPoliciesOperations.
+        /// </summary>
+        IExtendedSqlPoolBlobAuditingPoliciesOperations ExtendedSqlPoolBlobAuditingPolicies { get; }
+
+        /// <summary>
+        /// Gets the IDataMaskingPoliciesOperations.
+        /// </summary>
+        IDataMaskingPoliciesOperations DataMaskingPolicies { get; }
+
+        /// <summary>
+        /// Gets the IDataMaskingRulesOperations.
+        /// </summary>
+        IDataMaskingRulesOperations DataMaskingRules { get; }
+
+        /// <summary>
+        /// Gets the ISqlPoolColumnsOperations.
+        /// </summary>
+        ISqlPoolColumnsOperations SqlPoolColumns { get; }
+
+        /// <summary>
+        /// Gets the ITransparentDataEncryptionActivitiesOperations.
+        /// </summary>
+        ITransparentDataEncryptionActivitiesOperations TransparentDataEncryptionActivities { get; }
+
+        /// <summary>
+        /// Gets the IRestorePointsOperations.
+        /// </summary>
+        IRestorePointsOperations RestorePoints { get; }
+
+        /// <summary>
         /// Gets the IWorkspacesOperations.
         /// </summary>
         IWorkspacesOperations Workspaces { get; }
@@ -258,6 +288,41 @@ namespace Microsoft.Azure.Management.Synapse
         /// Gets the IPrivateLinkHubsOperations.
         /// </summary>
         IPrivateLinkHubsOperations PrivateLinkHubs { get; }
+
+        /// <summary>
+        /// Gets the IWorkspaceManagedSqlServerBlobAuditingPoliciesOperations.
+        /// </summary>
+        IWorkspaceManagedSqlServerBlobAuditingPoliciesOperations WorkspaceManagedSqlServerBlobAuditingPolicies { get; }
+
+        /// <summary>
+        /// Gets the IWorkspaceSManagedqlServerBlobAuditingPoliciesOperations.
+        /// </summary>
+        IWorkspaceSManagedqlServerBlobAuditingPoliciesOperations WorkspaceSManagedqlServerBlobAuditingPolicies { get; }
+
+        /// <summary>
+        /// Gets the IWorkspaceManagedSqlServerExtendedBlobAuditingPoliciesOperations.
+        /// </summary>
+        IWorkspaceManagedSqlServerExtendedBlobAuditingPoliciesOperations WorkspaceManagedSqlServerExtendedBlobAuditingPolicies { get; }
+
+        /// <summary>
+        /// Gets the IWorkspaceManagedSqlServerSecurityAlertPolicyOperations.
+        /// </summary>
+        IWorkspaceManagedSqlServerSecurityAlertPolicyOperations WorkspaceManagedSqlServerSecurityAlertPolicy { get; }
+
+        /// <summary>
+        /// Gets the IWorkspaceManagedSqlServerVulnerabilityAssessmentsOperations.
+        /// </summary>
+        IWorkspaceManagedSqlServerVulnerabilityAssessmentsOperations WorkspaceManagedSqlServerVulnerabilityAssessments { get; }
+
+        /// <summary>
+        /// Gets the IWorkspaceManagedSqlServerEncryptionProtectorOperations.
+        /// </summary>
+        IWorkspaceManagedSqlServerEncryptionProtectorOperations WorkspaceManagedSqlServerEncryptionProtector { get; }
+
+        /// <summary>
+        /// Gets the IWorkspaceManagedSqlServerKeysOperations.
+        /// </summary>
+        IWorkspaceManagedSqlServerKeysOperations WorkspaceManagedSqlServerKeys { get; }
 
     }
 }
