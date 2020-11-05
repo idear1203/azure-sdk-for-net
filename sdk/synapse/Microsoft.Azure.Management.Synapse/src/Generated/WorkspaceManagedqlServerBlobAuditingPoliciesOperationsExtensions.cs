@@ -17,9 +17,9 @@ namespace Microsoft.Azure.Management.Synapse
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Extension methods for WorkspaceSManagedqlServerBlobAuditingPoliciesOperations.
+    /// Extension methods for WorkspaceManagedqlServerBlobAuditingPoliciesOperations.
     /// </summary>
-    public static partial class WorkspaceSManagedqlServerBlobAuditingPoliciesOperationsExtensions
+    public static partial class WorkspaceManagedqlServerBlobAuditingPoliciesOperationsExtensions
     {
             /// <summary>
             /// Create or Update server's blob auditing policy.
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Management.Synapse
             /// <param name='parameters'>
             /// Properties of extended blob auditing policy.
             /// </param>
-            public static ServerBlobAuditingPolicy CreateOrUpdate(this IWorkspaceSManagedqlServerBlobAuditingPoliciesOperations operations, string resourceGroupName, string workspaceName, ServerBlobAuditingPolicy parameters)
+            public static ServerBlobAuditingPolicy CreateOrUpdate(this IWorkspaceManagedqlServerBlobAuditingPoliciesOperations operations, string resourceGroupName, string workspaceName, ServerBlobAuditingPolicy parameters)
             {
                 return operations.CreateOrUpdateAsync(resourceGroupName, workspaceName, parameters).GetAwaiter().GetResult();
             }
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Management.Synapse
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<ServerBlobAuditingPolicy> CreateOrUpdateAsync(this IWorkspaceSManagedqlServerBlobAuditingPoliciesOperations operations, string resourceGroupName, string workspaceName, ServerBlobAuditingPolicy parameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ServerBlobAuditingPolicy> CreateOrUpdateAsync(this IWorkspaceManagedqlServerBlobAuditingPoliciesOperations operations, string resourceGroupName, string workspaceName, ServerBlobAuditingPolicy parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, workspaceName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Management.Synapse
             /// <param name='parameters'>
             /// Properties of extended blob auditing policy.
             /// </param>
-            public static ServerBlobAuditingPolicy BeginCreateOrUpdate(this IWorkspaceSManagedqlServerBlobAuditingPoliciesOperations operations, string resourceGroupName, string workspaceName, ServerBlobAuditingPolicy parameters)
+            public static ServerBlobAuditingPolicy BeginCreateOrUpdate(this IWorkspaceManagedqlServerBlobAuditingPoliciesOperations operations, string resourceGroupName, string workspaceName, ServerBlobAuditingPolicy parameters)
             {
                 return operations.BeginCreateOrUpdateAsync(resourceGroupName, workspaceName, parameters).GetAwaiter().GetResult();
             }
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Management.Synapse
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<ServerBlobAuditingPolicy> BeginCreateOrUpdateAsync(this IWorkspaceSManagedqlServerBlobAuditingPoliciesOperations operations, string resourceGroupName, string workspaceName, ServerBlobAuditingPolicy parameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ServerBlobAuditingPolicy> BeginCreateOrUpdateAsync(this IWorkspaceManagedqlServerBlobAuditingPoliciesOperations operations, string resourceGroupName, string workspaceName, ServerBlobAuditingPolicy parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, workspaceName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {

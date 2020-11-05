@@ -23,12 +23,12 @@ namespace Microsoft.Azure.Management.Synapse
     using System.Threading.Tasks;
 
     /// <summary>
-    /// WorkspaceSManagedqlServerBlobAuditingPoliciesOperations operations.
+    /// WorkspaceManagedqlServerBlobAuditingPoliciesOperations operations.
     /// </summary>
-    internal partial class WorkspaceSManagedqlServerBlobAuditingPoliciesOperations : IServiceOperations<SynapseManagementClient>, IWorkspaceSManagedqlServerBlobAuditingPoliciesOperations
+    internal partial class WorkspaceManagedqlServerBlobAuditingPoliciesOperations : IServiceOperations<SynapseManagementClient>, IWorkspaceManagedqlServerBlobAuditingPoliciesOperations
     {
         /// <summary>
-        /// Initializes a new instance of the WorkspaceSManagedqlServerBlobAuditingPoliciesOperations class.
+        /// Initializes a new instance of the WorkspaceManagedqlServerBlobAuditingPoliciesOperations class.
         /// </summary>
         /// <param name='client'>
         /// Reference to the service client.
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.Synapse
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        internal WorkspaceSManagedqlServerBlobAuditingPoliciesOperations(SynapseManagementClient client)
+        internal WorkspaceManagedqlServerBlobAuditingPoliciesOperations(SynapseManagementClient client)
         {
             if (client == null)
             {

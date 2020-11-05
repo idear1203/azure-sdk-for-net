@@ -35,12 +35,12 @@ namespace Microsoft.Azure.Management.Synapse.Models
         /// <param name="serverKeyType">The encryption protector type like
         /// 'ServiceManaged', 'AzureKeyVault'. Possible values include:
         /// 'ServiceManaged', 'AzureKeyVault'</param>
-        /// <param name="id">Fully qualified resource Id for the resource. Ex -
+        /// <param name="id">Fully qualified resource ID for the resource. Ex -
         /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}</param>
         /// <param name="name">The name of the resource</param>
-        /// <param name="type">The type of the resource. Ex-
-        /// Microsoft.Compute/virtualMachines or
-        /// Microsoft.Storage/storageAccounts.</param>
+        /// <param name="type">The type of the resource. E.g.
+        /// "Microsoft.Compute/virtualMachines" or
+        /// "Microsoft.Storage/storageAccounts"</param>
         /// <param name="kind">Kind of encryption protector. This is metadata
         /// used for the Azure portal experience.</param>
         /// <param name="location">Resource location.</param>

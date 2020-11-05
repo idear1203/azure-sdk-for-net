@@ -205,16 +205,6 @@ namespace Microsoft.Azure.Management.Synapse
         ISqlPoolColumnsOperations SqlPoolColumns { get; }
 
         /// <summary>
-        /// Gets the ITransparentDataEncryptionActivitiesOperations.
-        /// </summary>
-        ITransparentDataEncryptionActivitiesOperations TransparentDataEncryptionActivities { get; }
-
-        /// <summary>
-        /// Gets the IRestorePointsOperations.
-        /// </summary>
-        IRestorePointsOperations RestorePoints { get; }
-
-        /// <summary>
         /// Gets the IWorkspacesOperations.
         /// </summary>
         IWorkspacesOperations Workspaces { get; }
@@ -225,9 +215,19 @@ namespace Microsoft.Azure.Management.Synapse
         IWorkspaceAadAdminsOperations WorkspaceAadAdmins { get; }
 
         /// <summary>
+        /// Gets the IWorkspaceSqlAadAdminsOperations.
+        /// </summary>
+        IWorkspaceSqlAadAdminsOperations WorkspaceSqlAadAdmins { get; }
+
+        /// <summary>
         /// Gets the IWorkspaceManagedIdentitySqlControlSettingsOperations.
         /// </summary>
         IWorkspaceManagedIdentitySqlControlSettingsOperations WorkspaceManagedIdentitySqlControlSettings { get; }
+
+        /// <summary>
+        /// Gets the IRestorableDroppedSqlPoolsOperations.
+        /// </summary>
+        IRestorableDroppedSqlPoolsOperations RestorableDroppedSqlPools { get; }
 
         /// <summary>
         /// Gets the IIntegrationRuntimesOperations.
@@ -290,14 +290,24 @@ namespace Microsoft.Azure.Management.Synapse
         IPrivateLinkHubsOperations PrivateLinkHubs { get; }
 
         /// <summary>
+        /// Gets the IPrivateEndpointConnectionsPrivateLinkHubOperations.
+        /// </summary>
+        IPrivateEndpointConnectionsPrivateLinkHubOperations PrivateEndpointConnectionsPrivateLinkHub { get; }
+
+        /// <summary>
+        /// Gets the IKeysOperations.
+        /// </summary>
+        IKeysOperations Keys { get; }
+
+        /// <summary>
         /// Gets the IWorkspaceManagedSqlServerBlobAuditingPoliciesOperations.
         /// </summary>
         IWorkspaceManagedSqlServerBlobAuditingPoliciesOperations WorkspaceManagedSqlServerBlobAuditingPolicies { get; }
 
         /// <summary>
-        /// Gets the IWorkspaceSManagedqlServerBlobAuditingPoliciesOperations.
+        /// Gets the IWorkspaceManagedqlServerBlobAuditingPoliciesOperations.
         /// </summary>
-        IWorkspaceSManagedqlServerBlobAuditingPoliciesOperations WorkspaceSManagedqlServerBlobAuditingPolicies { get; }
+        IWorkspaceManagedqlServerBlobAuditingPoliciesOperations WorkspaceManagedqlServerBlobAuditingPolicies { get; }
 
         /// <summary>
         /// Gets the IWorkspaceManagedSqlServerExtendedBlobAuditingPoliciesOperations.
@@ -320,9 +330,14 @@ namespace Microsoft.Azure.Management.Synapse
         IWorkspaceManagedSqlServerEncryptionProtectorOperations WorkspaceManagedSqlServerEncryptionProtector { get; }
 
         /// <summary>
-        /// Gets the IWorkspaceManagedSqlServerKeysOperations.
+        /// Gets the IWorkspaceManagedSqlServerUsagesOperations.
         /// </summary>
-        IWorkspaceManagedSqlServerKeysOperations WorkspaceManagedSqlServerKeys { get; }
+        IWorkspaceManagedSqlServerUsagesOperations WorkspaceManagedSqlServerUsages { get; }
+
+        /// <summary>
+        /// Gets the IWorkspaceManagedSqlServerRecoverableSqlpoolsOperations.
+        /// </summary>
+        IWorkspaceManagedSqlServerRecoverableSqlpoolsOperations WorkspaceManagedSqlServerRecoverableSqlpools { get; }
 
     }
 }

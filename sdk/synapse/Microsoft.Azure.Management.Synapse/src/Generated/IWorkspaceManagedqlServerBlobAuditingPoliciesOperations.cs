@@ -19,9 +19,9 @@ namespace Microsoft.Azure.Management.Synapse
     using System.Threading.Tasks;
 
     /// <summary>
-    /// WorkspaceSManagedqlServerBlobAuditingPoliciesOperations operations.
+    /// WorkspaceManagedqlServerBlobAuditingPoliciesOperations operations.
     /// </summary>
-    public partial interface IWorkspaceSManagedqlServerBlobAuditingPoliciesOperations
+    public partial interface IWorkspaceManagedqlServerBlobAuditingPoliciesOperations
     {
         /// <summary>
         /// Create or Update server's blob auditing policy.

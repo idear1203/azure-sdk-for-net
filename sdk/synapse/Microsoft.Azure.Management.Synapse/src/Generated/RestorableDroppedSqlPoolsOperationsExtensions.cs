@@ -13,16 +13,18 @@ namespace Microsoft.Azure.Management.Synapse
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
     using Models;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Extension methods for RestorePointsOperations.
+    /// Extension methods for RestorableDroppedSqlPoolsOperations.
     /// </summary>
-    public static partial class RestorePointsOperationsExtensions
+    public static partial class RestorableDroppedSqlPoolsOperationsExtensions
     {
             /// <summary>
-            /// Gets a restore point.
+            /// Gets a deleted sql pool that can be restored
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -33,19 +35,17 @@ namespace Microsoft.Azure.Management.Synapse
             /// <param name='workspaceName'>
             /// The name of the workspace
             /// </param>
-            /// <param name='sqlPoolName'>
-            /// SQL pool name
+            /// <param name='restorableDroppedSqlPoolId'>
+            /// The id of the deleted Sql Pool in the form of
+            /// sqlPoolName,deletionTimeInFileTimeFormat
             /// </param>
-            /// <param name='restorePointName'>
-            /// The name of the restore point.
-            /// </param>
-            public static RestorePoint Get(this IRestorePointsOperations operations, string resourceGroupName, string workspaceName, string sqlPoolName, string restorePointName)
+            public static RestorableDroppedSqlPool Get(this IRestorableDroppedSqlPoolsOperations operations, string resourceGroupName, string workspaceName, string restorableDroppedSqlPoolId)
             {
-                return operations.GetAsync(resourceGroupName, workspaceName, sqlPoolName, restorePointName).GetAwaiter().GetResult();
+                return operations.GetAsync(resourceGroupName, workspaceName, restorableDroppedSqlPoolId).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Gets a restore point.
+            /// Gets a deleted sql pool that can be restored
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -56,25 +56,23 @@ namespace Microsoft.Azure.Management.Synapse
             /// <param name='workspaceName'>
             /// The name of the workspace
             /// </param>
-            /// <param name='sqlPoolName'>
-            /// SQL pool name
-            /// </param>
-            /// <param name='restorePointName'>
-            /// The name of the restore point.
+            /// <param name='restorableDroppedSqlPoolId'>
+            /// The id of the deleted Sql Pool in the form of
+            /// sqlPoolName,deletionTimeInFileTimeFormat
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<RestorePoint> GetAsync(this IRestorePointsOperations operations, string resourceGroupName, string workspaceName, string sqlPoolName, string restorePointName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<RestorableDroppedSqlPool> GetAsync(this IRestorableDroppedSqlPoolsOperations operations, string resourceGroupName, string workspaceName, string restorableDroppedSqlPoolId, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, workspaceName, sqlPoolName, restorePointName, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, workspaceName, restorableDroppedSqlPoolId, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
             }
 
             /// <summary>
-            /// Deletes a restore point.
+            /// Gets a list of deleted Sql pools that can be restored
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -85,19 +83,13 @@ namespace Microsoft.Azure.Management.Synapse
             /// <param name='workspaceName'>
             /// The name of the workspace
             /// </param>
-            /// <param name='sqlPoolName'>
-            /// SQL pool name
-            /// </param>
-            /// <param name='restorePointName'>
-            /// The name of the restore point.
-            /// </param>
-            public static void Delete(this IRestorePointsOperations operations, string resourceGroupName, string workspaceName, string sqlPoolName, string restorePointName)
+            public static IEnumerable<RestorableDroppedSqlPool> ListByWorkspace(this IRestorableDroppedSqlPoolsOperations operations, string resourceGroupName, string workspaceName)
             {
-                operations.DeleteAsync(resourceGroupName, workspaceName, sqlPoolName, restorePointName).GetAwaiter().GetResult();
+                return operations.ListByWorkspaceAsync(resourceGroupName, workspaceName).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Deletes a restore point.
+            /// Gets a list of deleted Sql pools that can be restored
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -107,19 +99,16 @@ namespace Microsoft.Azure.Management.Synapse
             /// </param>
             /// <param name='workspaceName'>
             /// The name of the workspace
-            /// </param>
-            /// <param name='sqlPoolName'>
-            /// SQL pool name
-            /// </param>
-            /// <param name='restorePointName'>
-            /// The name of the restore point.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task DeleteAsync(this IRestorePointsOperations operations, string resourceGroupName, string workspaceName, string sqlPoolName, string restorePointName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IEnumerable<RestorableDroppedSqlPool>> ListByWorkspaceAsync(this IRestorableDroppedSqlPoolsOperations operations, string resourceGroupName, string workspaceName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, workspaceName, sqlPoolName, restorePointName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                using (var _result = await operations.ListByWorkspaceWithHttpMessagesAsync(resourceGroupName, workspaceName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
             }
 
     }
