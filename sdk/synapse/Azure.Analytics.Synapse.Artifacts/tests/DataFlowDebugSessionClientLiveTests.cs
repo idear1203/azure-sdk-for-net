@@ -74,20 +74,95 @@ namespace Azure.Analytics.Synapse.Artifacts.Tests
             ));
         }
 
-        [Ignore ("https://github.com/Azure/azure-sdk-for-net/issues/18079 prevents test from working")]
         [Test]
         public async Task AddDataFlow()
         {
-            DataFlowClient flowClient = CreateFlowClient();
             DataFlowDebugSessionClient debugClient = CreateDebugClient();
 
-            await using DisposableDataFlow flow = await DisposableDataFlow.Create (flowClient, this.Recording);
             await using DisposableDataFlowDebugSession debugSession = await DisposableDataFlowDebugSession.Create (debugClient, this.Recording);
 
+            // Reference names
+            string datasetReferenceName = "dataset";
+            string linkedServiceReferenceName = "linkedservice";
+            string dataFlowReferenceName = "dataflow";
+            string dataFlowSourceName = "source";
+
+            // ADLS Gen2 storage account info
+            string dataLakeStorageGen2AccountUrl = "https://<your-account>.dfs.core.windows.net";
+            string dataLakeStorageGen2FileSystemName = "<yourfilesystem>";
+
+            // Some file name in your ADLS Gen storage account
+            string fileName = "sample.csv";
+
+            string clientId = TestEnvironment.ClientId;
+
+            // NOTE: This secret will be sent in the request payload
+            // string clientSecret = TestEnvironment.ClientSecret;
+            string clientSecret = "fakedKey";
+
             // SYNAPSE_API_ISSUE - Why do we need to pass in SessionId here?
-            DataFlowDebugPackage debugPackage = new DataFlowDebugPackage () { DataFlow = new DataFlowDebugResource (flow.Resource.Properties), SessionId = debugSession.SessionId };
+            DataFlowDebugPackage debugPackage = new DataFlowDebugPackage();
+
+            // Data flow
+            MappingDataFlow dataFlowProperties = new MappingDataFlow();
+            dataFlowProperties.Sources.Add(new DataFlowSource(dataFlowSourceName)
+            {
+                Dataset = new DatasetReference(DatasetReferenceType.DatasetReference, datasetReferenceName)
+            });
+            dataFlowProperties.Transformations.Add(new Transformation(dataFlowSourceName));
+            dataFlowProperties.Script = $"connect() ~> {dataFlowSourceName}";
+            debugPackage.DataFlow = new DataFlowDebugResource(dataFlowProperties)
+            {
+                Name = dataFlowReferenceName
+            };
+
+            // Data set
+            LinkedServiceReference linkedServiceReference = new LinkedServiceReference(LinkedServiceReferenceType.LinkedServiceReference, linkedServiceReferenceName);
+            Dataset dataset = new DelimitedTextDataset(linkedServiceReference)
+            {
+                Location = new AzureBlobFSLocation
+                {
+                    FileName = fileName,
+                    FileSystem = dataLakeStorageGen2FileSystemName
+                }
+            };
+
+            DatasetDebugResource datasetDebugResource = new DatasetDebugResource(dataset)
+            {
+                Name = datasetReferenceName
+            };
+
+            debugPackage.Datasets.Add(datasetDebugResource);
+
+            // Linked service
+            LinkedService linkedService = new AzureBlobFSLinkedService(dataLakeStorageGen2AccountUrl)
+            {
+                ServicePrincipalId = clientId,
+                ServicePrincipalKey = new SecureString(clientSecret)
+            };
+
+            LinkedServiceDebugResource linkedServiceDebugResource = new LinkedServiceDebugResource(linkedService)
+            {
+                Name = linkedServiceReferenceName
+            };
+
+            debugPackage.LinkedServices.Add(linkedServiceDebugResource);
+
+            // Source setting
+            DataFlowSourceSetting sourceSetting = new DataFlowSourceSetting
+            {
+                SourceName = dataFlowSourceName,
+                RowLimit = 1000
+            };
+            debugPackage.DebugSettings = new DataFlowDebugPackageDebugSettings();
+            debugPackage.DebugSettings.SourceSettings.Add(sourceSetting);
+
+            // Session ID
+            debugPackage.SessionId = debugSession.SessionId;
+
+            // Add data flow to debug session
             AddDataFlowToDebugSessionResponse response = await debugClient.AddDataFlowAsync (debugPackage);
-            Assert.NotNull (response.JobVersion);
+            Assert.NotNull(response.JobVersion);
         }
 
         [Test]
