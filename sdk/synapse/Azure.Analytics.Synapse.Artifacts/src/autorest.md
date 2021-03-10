@@ -15,4 +15,12 @@ credential-types: TokenCredential
 credential-scopes: https://dev.azuresynapse.net/.default
 modelerfour:
   lenient-model-deduplication: true
+directive:
+- from: swagger-document
+  where: $.definitions
+  transform: >
+    for (var path in $)
+    {
+      $[path]["x-csharp-usage"] = "converter";
+    }
 ```
