@@ -4,6 +4,7 @@
 
 ### Added
 - Many models classes now have public getters.
+- Exposed Serialization and Deserialization methods.
 
 ## 1.0.0-preview.6 (2021-02-10)
 
